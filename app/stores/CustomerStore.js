@@ -4,7 +4,7 @@
 import {observable, action, computed, toJS, autorun} from 'mobx';
 import {remote} from 'electron';
 import {message} from 'antd';
-const {customer} = remote.require('./services');
+const {customer} = remote.require('./app/services');
 
 class Customer {
   @observable list = [];
