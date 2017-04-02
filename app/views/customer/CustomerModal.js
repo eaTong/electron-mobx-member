@@ -72,7 +72,7 @@ class CustomerModal extends Component {
               <FormItem label='联系电话' {...baseLayout}>
                 {customer.member.telephone ? customer.member.telephone : getFieldDecorator('telephone', {
                     rules: [
-                      {required: true, message: '请输入姓名!'},
+                      {required: true, message: '请输入电话!'},
                     ],
                   })(
                     <Input />
@@ -160,6 +160,17 @@ class CustomerModal extends Component {
             )}
           </FormItem>
           <Row>
+            <Col span={12}>
+              <FormItem label="消费金额"{...baseLayout}>
+                {getFieldDecorator('amount', {
+                  rules: [
+                    {required: true, message: '请输入会员号!'},
+                  ],
+                })(
+                  <Input type="number"/>
+                )}
+              </FormItem>
+            </Col>
             <Col span={12}>
               <FormItem label="消费日期"{...baseLayout}>
                 {getFieldDecorator('consumeDate', {initialValue: moment()})(

@@ -10,12 +10,13 @@ class Customer {
   @observable list = [];
   @observable showModal = false;
   @observable member = {};
+  @observable filter = {};
 
   @action
   getCustomer = () => {
     customer.getCustomerList(result => {
       if (result.success) {
-        result.data.map(item => this.list.push(item.toJSON()));
+        this.list =result.data.map(item => item.toJSON());
       }
     });
   };
@@ -24,7 +25,7 @@ class Customer {
   addCustomer = (data) => {
     customer.addCustomer(data, result => {
       if (result.success) {
-        this.list.push(result.data);
+        this.getCustomer();
         this.showModal = false;
       } else {
         message.error(result.message);
