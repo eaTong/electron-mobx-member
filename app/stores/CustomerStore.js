@@ -40,7 +40,6 @@ class Customer {
 
   @action
   changeFilter = (filter) => {
-    console.log(filter);
     this.filter = filter;
   };
 

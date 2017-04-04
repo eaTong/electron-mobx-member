@@ -2,8 +2,13 @@
  * Created by eatong on 17-3-22.
  */
 const Sequelize = require('sequelize');
+const config = {
+  name: 'member',
+  user: 'root',
+  pwd: 'zhou'
+};
 
-const sequelize = new Sequelize('member', 'root', 'zhou', {
+const sequelize = new Sequelize(config.name, config.user, config.pwd, {
   host: 'localhost',
   dialect: 'mysql',
 

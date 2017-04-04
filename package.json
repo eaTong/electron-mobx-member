@@ -7,7 +7,7 @@
     "email": "eatongchou@gmail.com"
   },
   "scripts": {
-    "start":"concurrently \"npm run start-dev\" \"npm run start-electron\"",
+    "start": "concurrently \"npm run start-dev\" \"npm run start-electron\"",
     "start-dev": "cross-env NODE_ENV=development webpack-dev-server",
     "start-electron": "cross-env NODE_ENV=development electron index",
     "build": "npm run dist && npm run build-all",

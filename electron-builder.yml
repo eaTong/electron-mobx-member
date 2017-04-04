@@ -10,6 +10,7 @@ directories:
 
 files:
   - package.json
+  - config.json
   - index.js
   - dist/
   - app/
