@@ -71,13 +71,13 @@ class Customer extends React.Component {
             <Search
               placeholder="搜索会员"
               style={{width: 200}}
-              onSearch={value => console.log(value)}
+              onSearch={customer.changeFilter}
             />
             <Button onClick={customer.toggleModal}>新增</Button>
           </div>
         </div>
         <div className="content">
-          <Table dataSource={customer.list.toJS()}
+          <Table dataSource={customer.customerList}
                  columns={column}
                  rowKey='id'
                  pagination={false}

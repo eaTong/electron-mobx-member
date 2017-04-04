@@ -10,13 +10,13 @@ class Customer {
   @observable list = [];
   @observable showModal = false;
   @observable member = {};
-  @observable filter = {};
+  @observable filter = "";
 
   @action
   getCustomer = () => {
     customer.getCustomerList(result => {
       if (result.success) {
-        this.list =result.data.map(item => item.toJSON());
+        this.list = result.data.map(item => item.toJSON());
       }
     });
   };
@@ -39,6 +39,12 @@ class Customer {
   };
 
   @action
+  changeFilter = (filter) => {
+    console.log(filter);
+    this.filter = filter;
+  };
+
+  @action
   getCustomerByNumber = (data) => {
     customer.getCustomerByNumber(data, result => {
       if (result.success) {
@@ -48,6 +54,13 @@ class Customer {
       }
     })
   };
+
+  @computed
+  get customerList() {
+    return this.list.toJS().filter(cus => {
+      return !this.filter || cus.telephone.indexOf(this.filter) !== -1 || cus.name.indexOf(this.filter) !== -1
+    })
+  }
 
   toJS() {
     return this.list.map(item => item.toJS());
