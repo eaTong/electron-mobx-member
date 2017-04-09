@@ -32,7 +32,7 @@ mac:
 
 win:
   target: nsis
-  icon: resources
+  icon: resources/icon
 
 linux:
   icon: resources
