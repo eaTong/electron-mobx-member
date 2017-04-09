@@ -2,14 +2,15 @@
  * Created by eatong on 17-3-22.
  */
 const Sequelize = require('sequelize');
-const config = {
+
+global.dbConfig = {
   name: 'member',
   user: 'root',
   pwd: 'zhou'
 };
-
-const sequelize = new Sequelize(config.name, config.user, config.pwd, {
-  host: 'localhost',
+console.log(global.dbConfig);
+const sequelize = new Sequelize(global.dbConfig.name, global.dbConfig.user, global.dbConfig.pwd, {
+  host: global.dbConfig.address || 'localhost',
   dialect: 'mysql',
 
   pool: {

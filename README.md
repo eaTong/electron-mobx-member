@@ -6,6 +6,7 @@ Maybe this is the most lightweight starter for `electron` & `MobX`.
 ### how to start development
 
 Just cd to this directory and run `npm start`.
+It's suggested to run both `start-dev` and `start-electron`,because you may restart your server a bit of times when you write your services, and restart webpack may take much time.
 
 ### hot to build 
 

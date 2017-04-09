@@ -70,7 +70,3 @@ const data = {
   tj: '234',
   consumeDate: undefined
 };
-
-addCustomer(data, result => {
-  console.log(result);
-});

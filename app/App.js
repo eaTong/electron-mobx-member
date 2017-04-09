@@ -6,12 +6,14 @@ import {HashRouter, Route, Link} from 'react-router-dom';
 import {Provider} from 'mobx-react';
 
 import MemberState from './stores/CustomerStore';
+import AppStore from './stores/AppStore';
 
 import Layout from './views/Layout';
 
 
 const stores = {
-  customer: new MemberState()
+  customer: new MemberState(),
+  app: new AppStore()
 };
 
 

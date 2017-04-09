@@ -6,7 +6,7 @@ import {remote} from 'electron';
 import {message} from 'antd';
 const {customer} = remote.require('./app/services');
 
-class Customer {
+export default class CustomerStore {
   @observable list = [];
   @observable showModal = false;
   @observable member = {};
@@ -67,4 +67,3 @@ class Customer {
 
 }
 
-export default Customer;
