@@ -2,6 +2,7 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {toJS} from 'mobx';
 import {Table, Input, Button} from 'antd';
+import moment from 'moment';
 import CustomerModal from './CustomerModal';
 const Search = Input.Search;
 
@@ -38,7 +39,10 @@ const consumeListColumns = [
   },
   {title: '瞳距', dataIndex: 'tj', key: 'tj'},
   {title: '消费金额', dataIndex: 'amount', key: 'amount'},
-  {title: '其他信息', dataIndex: 'otherInfo', key: 'otherInfo'},
+  {title: '消费日期', dataIndex: 'consumeDate', key: 'consumeDate', render: value => moment(value).format('YYYY-MM-DD')},
+  {
+    title: '其他信息', dataIndex: 'otherInfo', key: 'otherInfo'
+  },
 ];
 
 @inject('customer') @observer

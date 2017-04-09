@@ -1,6 +1,6 @@
 appId: com.example.electron-mobx-starter
 copyright: Example co
-productName: electron-mobx-starter
+productName: 会员管理系统
 
 asar: true
 
@@ -32,8 +32,10 @@ mac:
 
 win:
   target: nsis
+  icon: resources
 
 linux:
+  icon: resources
   target:
     - deb
     - AppImage
