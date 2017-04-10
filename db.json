@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "post": 3306,
+  "dbName": "member",
+  "user": "root",
+  "pwd": "zhou"
+}

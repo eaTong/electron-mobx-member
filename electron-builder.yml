@@ -3,6 +3,7 @@ copyright: Example co
 productName: 会员管理系统
 
 asar: true
+asarUnpack: db.json
 
 directories:
   buildResources: build-assets/
@@ -10,6 +11,7 @@ directories:
 
 files:
   - package.json
+  - db.json
   - config.json
   - index.js
   - dist/
