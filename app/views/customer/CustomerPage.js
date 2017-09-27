@@ -4,6 +4,7 @@ import {toJS} from 'mobx';
 import {Table, Input, Button} from 'antd';
 import moment from 'moment';
 import CustomerModal from './CustomerModal';
+
 const Search = Input.Search;
 
 const column = [
@@ -84,15 +85,16 @@ class Customer extends React.Component {
           <Table dataSource={customer.customerList}
                  columns={column}
                  rowKey='id'
-                 pagination={false}
+                 defaultExpandAllRows
                  expandedRowRender={(record) => record.tb_consum_lists.length > 0 ? this.expandedRowRender(record) : false}/>
         </div>
         <CustomerModal visible={customer.showModal}
                        toggleModal={customer.toggleModal}
-                       defaultExpandAllRows
+
                        onSave={this.onSaveCustomer}/>
       </div>
     );
   }
 }
+
 export default Customer;
