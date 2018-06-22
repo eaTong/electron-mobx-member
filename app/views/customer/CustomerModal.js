@@ -164,7 +164,7 @@ class CustomerModal extends Component {
               <FormItem label="消费金额"{...baseLayout}>
                 {getFieldDecorator('amount', {
                   rules: [
-                    {required: true, message: '请输入会员号!'},
+                    {required: true, message: '请输入消费金额!'},
                   ],
                 })(
                   <Input type="number"/>
