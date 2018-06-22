@@ -19,7 +19,10 @@
   "keywords": [
     "electron",
     "react",
-    "mobx"
+    "mobx",
+    "webpack4",
+    "mysql",
+    "antd"
   ],
   "license": "ISC",
   "dependencies": {},
