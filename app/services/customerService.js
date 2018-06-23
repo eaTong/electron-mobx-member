@@ -2,15 +2,37 @@
  * Created by eatong on 17-3-22.
  */
 const {CustomerModel, ConsumModal} = require('../models/CustomerModel');
-const {Success, Failure} =require('../util/message');
+const {Success, Failure} = require('../util/message');
+const {Op, fn} = require('sequelize');
 
 const uuidV4 = require('uuid/v4');
 
-function getCustomerList(callback) {
-  CustomerModel.findAll({include: [{model: ConsumModal}]})
-    .then(data => {
-      callback && callback(Success(data));
-    }).catch(error => callback && callback(Failure(error)));
+async function getCustomerList({keywords, pageIndex, pageSize}, callback) {
+  const option = {
+    where: {
+      [Op.or]: [
+        {name: {[Op.like]: `%${keywords}%`}},
+        {telephone: {[Op.like]: `%${keywords}%`}},
+      ]
+    }
+  };
+  const {dataValues: {total}} = await CustomerModel.findOne({
+    ...option,
+    attributes: [[fn('COUNT', '*'), 'total']]
+  });
+  const data = await CustomerModel.findAll({
+    offset: pageIndex * pageSize,
+    limit: pageSize, ...option,
+    include: [{model: ConsumModal}]
+  });
+  const list = data.map(item=>item.toJSON());
+  callback && callback(Success({total, list}));
+  return Success({total, list})
+
+  // CustomerModel.findAll({include: [{model: ConsumModal}]})
+  //   .then(data => {
+  //     callback && callback(Success(data));
+  //   }).catch(error => callback && callback(Failure(error)));
 }
 
 function addCustomer(data, callback) {
@@ -53,20 +75,4 @@ module.exports = {
   getCustomerList,
   addCustomer,
   getCustomerByNumber
-};
-
-const data = {
-  number: '001232',
-  name: '234',
-  telephone: '234',
-  conRight: '234',
-  conLeft: '234',
-  qjRight: '2342',
-  qjLeft: '234',
-  zjRight: '3423',
-  zjLeft: '234',
-  zwRight: '4234',
-  zwLeft: '234',
-  tj: '234',
-  consumeDate: undefined
 };

@@ -13,8 +13,8 @@ const column = [
   {title: '电话', dataIndex: 'telephone', key: 'telephone'},
   {
     title: '消费次数', key: 'consumeCount', render: item => {
-    return (item.tb_consum_lists || []).length + '次';
-  }
+      return (item.tb_consum_lists || []).length + '次';
+    }
   },
   {title: '累计积分', dataIndex: 'points', key: 'points'},
   {title: '剩余积分', dataIndex: 'rest_points', key: 'rest_points'},
@@ -82,16 +82,27 @@ class Customer extends React.Component {
           </div>
         </div>
         <div className="content">
-          <Table dataSource={customer.customerList}
-                 columns={column}
-                 rowKey='id'
-                 defaultExpandAllRows
-                 expandedRowRender={(record) => record.tb_consum_lists.length > 0 ? this.expandedRowRender(record) : false}/>
+          <Table
+            dataSource={customer.list}
+            columns={column}
+            rowKey='id'
+            pagination={{
+              current: customer.pageIndex + 1,
+              total: customer.total,
+              pageSize: 5,
+              showTotal: (total) => `总数量：${total}。`,
+              onChange: (current) => customer.paginate(current)
+            }}
+            defaultExpandAllRows
+            expandedRowRender={(record) => record.tb_consum_lists.length > 0 ? this.expandedRowRender(record) : false}
+          />
         </div>
-        <CustomerModal visible={customer.showModal}
-                       toggleModal={customer.toggleModal}
-
-                       onSave={this.onSaveCustomer}/>
+        {customer.showModal && (
+          <CustomerModal
+            visible={customer.showModal}
+            toggleModal={customer.toggleModal}
+            onSave={this.onSaveCustomer}/>
+        )}
       </div>
     );
   }

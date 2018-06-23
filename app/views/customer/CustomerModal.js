@@ -5,6 +5,7 @@ import React, {PropTypes, Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {Modal, Form, Input, Row, Col, DatePicker} from 'antd';
 import moment from 'moment';
+
 const FormItem = Form.Item;
 const baseLayout = {
   labelCol: {span: 8},
@@ -38,6 +39,7 @@ class CustomerModal extends Component {
       <Modal title="新增会员"
              visible={this.props.visible}
              onOk={this.saveCustomer}
+             maskCloseable={false}
              onCancel={this.props.toggleModal}>
         <Form layout='horizontal'>
 
@@ -59,24 +61,24 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label='姓名' {...baseLayout}>
                 {customer.member.telephone ? customer.member.name : getFieldDecorator('name', {
-                    rules: [
-                      {required: true, message: '请输入姓名!'},
-                    ],
-                  })(
-                    <Input />
-                  )}
+                  rules: [
+                    {required: true, message: '请输入姓名!'},
+                  ],
+                })(
+                  <Input/>
+                )}
               </FormItem>
             </Col>
             <Col span={12}>
 
               <FormItem label='联系电话' {...baseLayout}>
                 {customer.member.telephone ? customer.member.telephone : getFieldDecorator('telephone', {
-                    rules: [
-                      {required: true, message: '请输入电话!'},
-                    ],
-                  })(
-                    <Input />
-                  )}
+                  rules: [
+                    {required: true, message: '请输入电话!'},
+                  ],
+                })(
+                  <Input/>
+                )}
               </FormItem>
             </Col>
 
@@ -85,14 +87,14 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="隐形（右）"{...baseLayout}>
                 {getFieldDecorator('conRight')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
             <Col span={12}>
               <FormItem label="隐形（左）"{...baseLayout}>
                 {getFieldDecorator('conLeft')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
@@ -101,14 +103,14 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="球镜（右）"{...baseLayout}>
                 {getFieldDecorator('qjRight')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
             <Col span={12}>
               <FormItem label="球镜（左）"{...baseLayout}>
                 {getFieldDecorator('qjLeft')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
@@ -117,14 +119,14 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="柱镜（右）"{...baseLayout}>
                 {getFieldDecorator('zjRight')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
             <Col span={12}>
               <FormItem label="柱镜（左）"{...baseLayout}>
                 {getFieldDecorator('zjLeft')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
@@ -133,14 +135,14 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="轴位（右）"{...baseLayout}>
                 {getFieldDecorator('zwRight')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
             <Col span={12}>
               <FormItem label="轴位（左）"{...baseLayout}>
                 {getFieldDecorator('zwLeft')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
@@ -149,7 +151,7 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="瞳距"{...baseLayout}>
                 {getFieldDecorator('tj')(
-                  <Input />
+                  <Input/>
                 )}
               </FormItem>
             </Col>
@@ -174,7 +176,7 @@ class CustomerModal extends Component {
             <Col span={12}>
               <FormItem label="消费日期"{...baseLayout}>
                 {getFieldDecorator('consumeDate', {initialValue: moment()})(
-                  <DatePicker />
+                  <DatePicker/>
                 )}
               </FormItem>
             </Col>

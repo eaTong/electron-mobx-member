@@ -4,19 +4,33 @@
 import {observable, action, computed, toJS, autorun} from 'mobx';
 import {remote} from 'electron';
 import {message} from 'antd';
+
 const {customer} = remote.require('./app/services');
 
 export default class CustomerStore {
   @observable list = [];
+  @observable total = 0;
+  @observable pageIndex = 0;
   @observable showModal = false;
   @observable member = {};
   @observable filter = "";
 
   @action
+  paginate(pageIndex){
+    this.pageIndex = pageIndex-1;
+    this.getCustomer();
+  }
+
+  @action
   getCustomer = () => {
-    customer.getCustomerList(result => {
+    customer.getCustomerList({keywords: this.filter, pageIndex: this.pageIndex, pageSize: 5}, result => {
       if (result.success) {
-        this.list = result.data.map(item => item.toJSON());
+        console.log(result);
+        // this.list = result.data.map(item => item.toJSON());
+        const {list, total} = result.data;
+        console.log(list , total);
+        this.list = list;
+        this.total = total;
       }
     });
   };
@@ -54,16 +68,16 @@ export default class CustomerStore {
     })
   };
 
-  @computed
-  get customerList() {
-    return this.list.toJS().filter(cus => {
-      return !this.filter || cus.telephone.indexOf(this.filter) !== -1 || cus.name.indexOf(this.filter) !== -1
-    })
-  }
+  /*  @computed
+    get customerList() {
+      return this.list.toJS().filter(cus => {
+        return !this.filter || cus.telephone.indexOf(this.filter) !== -1 || cus.name.indexOf(this.filter) !== -1
+      })
+    }
 
-  toJS() {
-    return this.list.map(item => item.toJS());
-  }
+    toJS() {
+      return this.list.map(item => item.toJS());
+    }*/
 
 }
 
