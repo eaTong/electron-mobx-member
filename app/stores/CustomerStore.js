@@ -23,7 +23,7 @@ export default class CustomerStore {
 
   @action
   getCustomer = () => {
-    customer.getCustomerList({keywords: this.filter, pageIndex: this.pageIndex, pageSize: 5}, result => {
+    customer.getCustomerList({keywords: this.filter, pageIndex: this.pageIndex, pageSize: 20}, result => {
       if (result.success) {
         console.log(result);
         // this.list = result.data.map(item => item.toJSON());
@@ -55,6 +55,7 @@ export default class CustomerStore {
   @action
   changeFilter = (filter) => {
     this.filter = filter;
+    this.getCustomer();
   };
 
   @action
@@ -67,17 +68,6 @@ export default class CustomerStore {
       }
     })
   };
-
-  /*  @computed
-    get customerList() {
-      return this.list.toJS().filter(cus => {
-        return !this.filter || cus.telephone.indexOf(this.filter) !== -1 || cus.name.indexOf(this.filter) !== -1
-      })
-    }
-
-    toJS() {
-      return this.list.map(item => item.toJS());
-    }*/
 
 }
 

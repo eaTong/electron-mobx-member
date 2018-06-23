@@ -1,7 +1,7 @@
 {
   "name": "electron-mobx-member",
   "description": "Member manager write by electron && mobx  ",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "author": {
     "name": "eaTong",
     "email": "eatongchou@gmail.com"
@@ -25,6 +25,12 @@
     "antd"
   ],
   "license": "ISC",
+  "dependencies": {
+    "moment": "^2.18.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0",
+    "uuid": "^3.0.1"
+  },
   "devDependencies": {
     "antd": "^3.6.3",
     "babel-core": "^6.26.3",
@@ -48,16 +54,12 @@
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "moment": "^2.18.1",
-    "mysql": "^2.15.0",
-    "mysql2": "^1.5.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-hot-loader": "^4.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "sequelize": "^4.38.0",
     "style-loader": "^0.21.0",
-    "uuid": "^3.0.1",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"

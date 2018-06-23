@@ -76,6 +76,7 @@ class Customer extends React.Component {
             <Search
               placeholder="搜索会员"
               style={{width: 200}}
+              enterButton
               onSearch={customer.changeFilter}
             />
             <Button onClick={customer.toggleModal}>新增</Button>
@@ -89,7 +90,7 @@ class Customer extends React.Component {
             pagination={{
               current: customer.pageIndex + 1,
               total: customer.total,
-              pageSize: 5,
+              pageSize: 20,
               showTotal: (total) => `总数量：${total}。`,
               onChange: (current) => customer.paginate(current)
             }}
